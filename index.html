@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TheNyala — Tarot & Astrology</title>
+<meta name="description" content="One-to-one tarot and birth-chart readings, as a PDF with an audio recording or live by video call, to help you understand your patterns, choose your next step and move with your timing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preload" as="image" href="assets/Background/The%20Nyla%20x%20Vitruvian%20Man.png">
+<link rel="preload" as="font" type="font/ttf" href="assets/fonts/Anaktoria.ttf" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/paper-symbols.js" defer></script>
+<script src="js/hero-video.js" defer></script>
+<script src="js/section-transitions.js" defer></script>
+<script src="js/review-stories.js" defer></script>
+
+</head>
+<body>
+
+<header class="home-header">
+  <!-- Daily Card remains a placeholder until its section is ready. -->
+  <nav class="nav home-nav" aria-label="Primary">
+    <a href="#readings">Readings</a>
+    <a href="#">Daily Card</a>
+    <a href="#reviews">Reviews</a>
+  </nav>
+</header>
+
+<!-- The collage belongs only to the hero; readings retain the terracotta paper. -->
+<main>
+  <section class="hero hero--collage" id="top" aria-labelledby="hero-title">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1" poster="assets/Background/The%20Nyla%20x%20Vitruvian%20Man.png">
+      <source src="assets/Background/nyala-hero.mp4?v=2" type="video/mp4">
+    </video>
+    <p class="wordmark">TheNyala</p>
+
+    <div class="hero-frame">
+      <div class="hero-copy">
+        <h1 id="hero-title">The stars remember<br>what you've forgotten.</h1>
+        <p class="hero-lede">Personal tarot and birth-chart readings to help you understand your patterns and choose your next step.</p>
+      </div>
+      <div class="hero-act">
+        <a href="#readings" class="hero-cta">Find Your Path
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z" fill="currentColor"/><circle cx="13.2" cy="2.8" r="1" fill="currentColor"/><circle cx="2.8" cy="13.2" r=".8" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="readings" id="readings" aria-labelledby="readings-title">
+    <div class="pricing">
+      <div class="pricing-head">
+        <div class="pricing-intro">
+        <h2 id="readings-title">Readings and Offerings</h2>
+        <p class="pricing-lede">Every reading is one-to-one, prepared from what you share when you book, and comes as a PDF with an audio recording or as a live video call. Choose the one that fits the question you're carrying.</p>
+        </div>
+        <div class="deck-fan" aria-hidden="true">
+          <img class="deck-fan-card deck-fan-card--left" src="assets/deck/the-fool.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+          <img class="deck-fan-card deck-fan-card--right" src="assets/deck/wheel-of-fortune.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+          <img class="deck-fan-card deck-fan-card--center" src="assets/deck/the-high-priestess.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <!-- Pricing columns, one per reading, as leaves of aged parchment: an inked double frame, a Roman numeral and the
+           reading's name, then the engraving from the client's own card (cut out by tools/build-engravings.ps1) drawn over
+           Vitruvian construction lines (the circle, square and triangle of the hero collage; inline, so js/section-transitions.js can draw them), who it's for, the price, the
+           format and the framed button, then what's included. A faint embossed tarot card (the same as on the page's paper)
+           is pressed into each leaf. Prices aren't decided yet: replace each "Price coming soon" once they are. Each
+           button opens the booking page with its reading picked. The wording of each list follows the booking form;
+           check it with the reader. -->
+      <ul class="offers">
+        <li class="offer plan">
+          <div class="plan-mark" aria-hidden="true"><img src="assets/deck/embossed-magician.webp" alt="" width="400" height="600" loading="lazy" decoding="async"></div>
+          <svg class="plan-frame" aria-hidden="true" focusable="false"><rect width="100%" height="100%" pathLength="1"/></svg>
+          <svg class="plan-frame plan-frame--inner" aria-hidden="true" focusable="false"><rect width="100%" height="100%" pathLength="1"/></svg>
+          <div class="plan-head">
+            <span class="plan-numeral" aria-hidden="true">I</span>
+            <h3 class="plan-name">Digital Tarot Reading</h3>
+          </div>
+          <div class="plan-top">
+            <div class="plan-emblem" aria-hidden="true"><svg class="plan-geometry" viewBox="0 0 200 200"><circle class="plan-line" cx="100" cy="100" r="92" pathLength="1"/><rect class="plan-line" x="27" y="35" width="146" height="146" pathLength="1"/><path class="plan-line" d="M100 8 179.7 146H20.3Z" pathLength="1"/><path class="plan-geometry-axis" d="M100 0v200M0 100h200"/><circle class="plan-geometry-dot" cx="100" cy="100" r="2.2"/></svg><img class="plan-engraving" src="assets/engravings/caterpillar.webp" alt="" width="480" height="196" loading="lazy" decoding="async"></div>
+            <p class="plan-for">For a clear look at the questions on your mind right now.</p>
+            <p class="plan-price">Price coming soon</p>
+            <p class="plan-format">PDF and audio, or live for 30 minutes</p>
+            <a class="hero-cta plan-cta" href="book.html?reading=tarot">Choose this reading <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z" fill="currentColor"/></svg></a>
+          </div>
+          <div class="plan-includes">
+            <p class="plan-includes-title">What's included</p>
+            <ul class="plan-list">
+              <li>One question or three questions</li>
+              <li>Your reading written up as a PDF</li>
+              <li>An audio recording of your reading</li>
+              <li>Or a live 30-minute session by video call<small>Bring as many questions as you like</small></li>
+              <li>Prepared from your situation and questions</li>
+              <li>You choose your preferred date</li>
+            </ul>
+          </div>
+        </li>
+        <li class="offer plan">
+          <div class="plan-mark" aria-hidden="true"><img src="assets/deck/embossed-wheel.webp" alt="" width="400" height="600" loading="lazy" decoding="async"></div>
+          <svg class="plan-frame" aria-hidden="true" focusable="false"><rect width="100%" height="100%" pathLength="1"/></svg>
+          <svg class="plan-frame plan-frame--inner" aria-hidden="true" focusable="false"><rect width="100%" height="100%" pathLength="1"/></svg>
+          <div class="plan-head">
+            <span class="plan-numeral" aria-hidden="true">II</span>
+            <h3 class="plan-name">Birth Chart Reading</h3>
+          </div>
+          <div class="plan-top">
+            <div class="plan-emblem" aria-hidden="true"><svg class="plan-geometry" viewBox="0 0 200 200"><circle class="plan-line" cx="100" cy="100" r="92" pathLength="1"/><rect class="plan-line" x="27" y="35" width="146" height="146" pathLength="1"/><path class="plan-line" d="M100 8 179.7 146H20.3Z" pathLength="1"/><path class="plan-geometry-axis" d="M100 0v200M0 100h200"/><circle class="plan-geometry-dot" cx="100" cy="100" r="2.2"/></svg><img class="plan-engraving" src="assets/engravings/chrysalis.webp" alt="" width="224" height="320" loading="lazy" decoding="async"></div>
+            <p class="plan-for">For understanding your patterns, your strengths and your timing.</p>
+            <p class="plan-price">Price coming soon</p>
+            <p class="plan-format">PDF and audio recording</p>
+            <a class="hero-cta plan-cta" href="book.html?reading=chart">Choose this reading <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z" fill="currentColor"/></svg></a>
+          </div>
+          <div class="plan-includes">
+            <p class="plan-includes-title">What's included</p>
+            <ul class="plan-list">
+              <li>Your birth chart, read for you<small>From your date, time and place of birth</small></li>
+              <li>Focused on the areas you choose to explore</li>
+              <li>Your reading written up as a PDF</li>
+              <li>An audio recording of your reading</li>
+            </ul>
+          </div>
+        </li>
+        <li class="offer plan">
+          <div class="plan-mark" aria-hidden="true"><img src="assets/deck/embossed-temperance.webp" alt="" width="400" height="600" loading="lazy" decoding="async"></div>
+          <svg class="plan-frame" aria-hidden="true" focusable="false"><rect width="100%" height="100%" pathLength="1"/></svg>
+          <svg class="plan-frame plan-frame--inner" aria-hidden="true" focusable="false"><rect width="100%" height="100%" pathLength="1"/></svg>
+          <div class="plan-head">
+            <span class="plan-numeral" aria-hidden="true">III</span>
+            <h3 class="plan-name">Birth Chart + Tarot Reading</h3>
+          </div>
+          <div class="plan-top">
+            <div class="plan-emblem" aria-hidden="true"><svg class="plan-geometry" viewBox="0 0 200 200"><circle class="plan-line" cx="100" cy="100" r="92" pathLength="1"/><rect class="plan-line" x="27" y="35" width="146" height="146" pathLength="1"/><path class="plan-line" d="M100 8 179.7 146H20.3Z" pathLength="1"/><path class="plan-geometry-axis" d="M100 0v200M0 100h200"/><circle class="plan-geometry-dot" cx="100" cy="100" r="2.2"/></svg><img class="plan-engraving" src="assets/engravings/butterfly.webp" alt="" width="520" height="312" loading="lazy" decoding="async"></div>
+            <p class="plan-for">For the whole picture: who you are, and where you're heading.</p>
+            <p class="plan-price">Price coming soon</p>
+            <p class="plan-format">Live session, 60 to 70 minutes</p>
+            <a class="hero-cta plan-cta" href="book.html?reading=combo">Choose this reading <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z" fill="currentColor"/></svg></a>
+          </div>
+          <div class="plan-includes">
+            <p class="plan-includes-title">Both readings in one, live</p>
+            <ul class="plan-list">
+              <li>A live session by video call<small>60 to 70 minutes</small></li>
+              <li>Your birth chart and the cards, read together</li>
+              <li>Your questions, answered in the cards</li>
+              <li>Focused on the areas you choose to explore</li>
+              <li>You choose your preferred date</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section class="reviews-section" id="reviews" aria-labelledby="reviews-title">
+  <div class="reviews-main">
+  <div class="reviews-intro">
+    <div class="reviews-intro-copy">
+      <h2 id="reviews-title">Words after a reading</h2>
+      <p class="reviews-lede">Every reading begins with a question. This is a space for the reflections that follow.</p>
+      <p class="reviews-status">Client reviews are coming soon.</p>
+    </div>
+    <div class="deck-fan" aria-hidden="true">
+      <img class="deck-fan-card deck-fan-card--left" src="assets/deck/the-fool.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+      <img class="deck-fan-card deck-fan-card--right" src="assets/deck/wheel-of-fortune.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+      <img class="deck-fan-card deck-fan-card--center" src="assets/deck/the-high-priestess.webp" alt="" width="480" height="720" loading="lazy" decoding="async">
+    </div>
+  </div>
+
+  <!-- Review stories: each has an avatar with a rolled scroll beside it; tapping the scroll unrolls it to show the
+       review (js/review-stories.js). Draft slots, not testimonials: replace each placeholder avatar and text with a
+       real, permission-approved review and attribution, and keep the coming-soon labels until then. -->
+  <!-- the ragged edge of the review scrolls' paper (used by css/style.css, "Review stories") -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="story-rough" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="3" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
+  <ul class="review-stories" aria-label="Client reviews by reading">
+    <li class="review-story">
+      <div class="story-avatar" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="11"/><path d="M11 57c2-12 10-18 21-18s19 6 21 18Z"/></svg></div>
+      <div class="story-body">
+        <h3 class="story-reading">Digital Tarot Reading</h3>
+        <div class="story-scroll">
+          <button class="story-roll" type="button" aria-expanded="false" aria-controls="story-tarot" aria-label="Open the Digital Tarot Reading review">
+            <span class="story-rod" aria-hidden="true"></span>
+            <span class="story-seal" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z" fill="currentColor"/></svg></span>
+          </button>
+          <div class="story-paper" id="story-tarot" inert>
+            <div class="story-paper-inner">
+              <div class="story-text">
+                <span class="story-ornament" aria-hidden="true">✧</span>
+                <p>A space for reflections on a tarot reading and the questions brought to the cards.</p>
+                <p class="story-pending">Review coming soon</p>
+              </div>
+            </div>
+          </div>
+          <span class="story-rod story-rod--bottom" aria-hidden="true"></span>
+        </div>
+        <p class="story-hint" aria-hidden="true">Tap the scroll to open it</p>
+      </div>
+    </li>
+    <li class="review-story">
+      <div class="story-avatar" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="11"/><path d="M11 57c2-12 10-18 21-18s19 6 21 18Z"/></svg></div>
+      <div class="story-body">
+        <h3 class="story-reading">Birth Chart Reading</h3>
+        <div class="story-scroll">
+          <button class="story-roll" type="button" aria-expanded="false" aria-controls="story-chart" aria-label="Open the Birth Chart Reading review">
+            <span class="story-rod" aria-hidden="true"></span>
+            <span class="story-seal" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z" fill="currentColor"/></svg></span>
+          </button>
+          <div class="story-paper" id="story-chart" inert>
+            <div class="story-paper-inner">
+              <div class="story-text">
+                <span class="story-ornament" aria-hidden="true">✧</span>
+                <p>A space for reflections on exploring a birth chart, its patterns, and personal timing.</p>
+                <p class="story-pending">Review coming soon</p>
+              </div>
+            </div>
+          </div>
+          <span class="story-rod story-rod--bottom" aria-hidden="true"></span>
+        </div>
+        <p class="story-hint" aria-hidden="true">Tap the scroll to open it</p>
+      </div>
+    </li>
+    <li class="review-story">
+      <div class="story-avatar" aria-hidden="true"><svg viewBox="0 0 64 64"><circle cx="32" cy="24" r="11"/><path d="M11 57c2-12 10-18 21-18s19 6 21 18Z"/></svg></div>
+      <div class="story-body">
+        <h3 class="story-reading">Birth Chart + Tarot</h3>
+        <div class="story-scroll">
+          <button class="story-roll" type="button" aria-expanded="false" aria-controls="story-combo" aria-label="Open the Birth Chart + Tarot review">
+            <span class="story-rod" aria-hidden="true"></span>
+            <span class="story-seal" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z" fill="currentColor"/></svg></span>
+          </button>
+          <div class="story-paper" id="story-combo" inert>
+            <div class="story-paper-inner">
+              <div class="story-text">
+                <span class="story-ornament" aria-hidden="true">✧</span>
+                <p>A space for reflections on bringing the birth chart and the cards into one conversation.</p>
+                <p class="story-pending">Review coming soon</p>
+              </div>
+            </div>
+          </div>
+          <span class="story-rod story-rod--bottom" aria-hidden="true"></span>
+        </div>
+        <p class="story-hint" aria-hidden="true">Tap the scroll to open it</p>
+      </div>
+    </li>
+  </ul>
+  </div>
+  </section>
+</main>
+
+</body>
+</html>

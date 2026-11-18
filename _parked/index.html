@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TheNyala — Tarot & Astrology</title>
+<meta name="description" content="TheNyala offers intuitive tarot readings and personal astrology charts to help you see your path with clarity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&family=Hanken+Grotesk:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- SVG symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5c.6 5.2 4.3 8.9 9.5 9.5-5.2.6-8.9 4.3-9.5 9.5-.6-5.2-4.3-8.9-9.5-9.5 5.2-.6 8.9-4.3 9.5-9.5z"/></symbol>
+  <symbol id="emblem" viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
+    <path d="M25 9a12 12 0 1 0 0 22 10 10 0 0 1 0-22z" fill="currentColor"/>
+    <path d="M27 17.5c.3 2.1 1.5 3.3 3.5 3.5-2 .3-3.2 1.5-3.5 3.5-.3-2-1.5-3.2-3.5-3.5 2-.2 3.2-1.4 3.5-3.5z" fill="#f0d29a"/>
+  </symbol>
+</svg>
+
+<header>
+  <a href="#top" class="brand" aria-label="TheNyala home"><img src="../assets/logo.png" alt="" class="brand-mark" width="17" height="52">TheNyala</a>
+  <nav class="nav" aria-label="Primary">
+    <a href="#readings">Readings</a>
+    <a href="#draw">Daily Card</a>
+    <a href="#about">About</a>
+    <a href="#voices">Reviews</a>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="forest" aria-hidden="true">
+      <img class="nyala" src="../assets/nyala.webp" alt="" width="572" height="1744">
+    </div>
+
+    <p class="wordmark" aria-hidden="true"><span>T</span><span>H</span><span>E</span><span>N</span><span>Y</span><span>A</span><span>L</span><span>A</span></p>
+
+    <div class="hero-frame">
+      <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
+      <div class="hero-copy">
+        <h1 id="hero-title">The stars remember<br>what you've forgotten.</h1>
+        <p class="hero-lede">Live one-to-one tarot and birth-chart readings by video call, to help you understand your patterns, choose your next step and move with your timing.</p>
+      </div>
+      <div class="hero-act">
+        <p class="moon-line">
+          <svg class="moon-glyph" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="rgba(232,238,226,.18)"/><path id="moonLit" fill="#eef3e8"/></svg>
+          <span id="moonName">Tonight's moon</span><span class="dot" aria-hidden="true"></span><span id="moonNote"></span>
+        </p>
+        <a href="#book" class="hero-cta">Book Your Reading
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z" fill="currentColor"/><circle cx="13.2" cy="2.8" r="1" fill="currentColor"/><circle cx="2.8" cy="13.2" r=".8" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRAW A CARD -->
+  <section class="draw" id="draw">
+    <div class="wrap framed reveal">
+      <span class="b1"></span><span class="b2"></span>
+      <span class="kicker" style="justify-content:center">Your Daily Card</span>
+      <h2>Breathe in. Hold a question.<br><em>Choose one card.</em></h2>
+      <p class="sub">A small message from the deck to carry with you today. Come back tomorrow for another.</p>
+      <div class="deck" id="deck"></div>
+      <div class="reading" id="reading" aria-live="polite"><h3></h3><p></p></div>
+      <button class="reshuffle" id="reshuffle">↻ Shuffle again</button>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="readings">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <span class="kicker">Readings & Charts</span>
+          <h2>Guidance shaped<br>around <em>your</em> question.</h2>
+        </div>
+        <p>Each session is live and one-to-one, by video or in person. You'll get a written summary and a recording afterwards so you can come back to it as things unfold.</p>
+      </div>
+      <div class="services reveal">
+        <article class="svc">
+          <a href="#book" class="more" aria-label="Book Tarot Reading"><svg><use href="#i-arrow"/></svg></a>
+          <div class="ico"><svg><use href="#i-eye"/></svg></div>
+          <h3>Tarot Reading</h3>
+          <p>A focused spread on love, work or a crossroads. We look at what's moving beneath the surface and what's within your power.</p>
+          <div class="meta"><span class="price">$65<small>from</small></span><span class="dur">45 min</span></div>
+        </article>
+        <article class="svc">
+          <a href="#book" class="more" aria-label="Book Birth Chart Reading"><svg><use href="#i-arrow"/></svg></a>
+          <div class="ico"><svg><use href="#i-chart"/></svg></div>
+          <h3>Natal Birth Chart</h3>
+          <p>Your sun, moon, rising and every planet, mapped at the moment you were born and translated into plain, personal language.</p>
+          <div class="meta"><span class="price">$120</span><span class="dur">75 min</span></div>
+        </article>
+        <article class="svc">
+          <a href="#book" class="more" aria-label="Book Compatibility Reading"><svg><use href="#i-arrow"/></svg></a>
+          <div class="ico"><svg><use href="#i-heart"/></svg></div>
+          <h3>Synastry & Love</h3>
+          <p>Two charts side by side, showing where you flow, where you spark and how to grow together without losing yourselves.</p>
+          <div class="meta"><span class="price">$140</span><span class="dur">75 min</span></div>
+        </article>
+        <article class="svc">
+          <a href="#book" class="more" aria-label="Book Year Ahead Forecast"><svg><use href="#i-arrow"/></svg></a>
+          <div class="ico"><svg><use href="#i-sun"/></svg></div>
+          <h3>Year Ahead Forecast</h3>
+          <p>Transits, solar return and a 12-card tarot spread, one card for each month, to help you plan with the cosmos instead of against it.</p>
+          <div class="meta"><span class="price">$180</span><span class="dur">90 min</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="padding-top:40px">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="kicker">How It Works</span><h2>Three quiet steps.</h2></div>
+        <p>No jargon or fear-based predictions. Just honest guidance you can use.</p>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><span class="n">01</span><h3>Choose & book</h3><p>Pick a reading and a time that suits you. For charts, share your birth date, time and place.</p></div>
+        <div class="step"><span class="n">02</span><h3>We sit together</h3><p>A calm, unhurried session. Bring your questions, or let the cards and planets lead.</p></div>
+        <div class="step"><span class="n">03</span><h3>Carry it with you</h3><p>Receive your chart, spread photos and a written summary to revisit whenever you need it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="portrait reveal">
+        <div class="ph">
+          <svg viewBox="0 0 40 40" style="color:rgba(255,255,255,.75)"><use href="#emblem"/></svg>
+          Reader portrait
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="kicker">Meet Your Reader</span>
+        <blockquote>"The cards don't decide your future. They show you where you're already standing, so you can choose where to go next."</blockquote>
+        <p>[Reader bio placeholder] Share how you found tarot and astrology, how long you've been reading and what clients can expect in a session.</p>
+        <p>Every reading at TheNyala is grounded, compassionate and confidential, a space to slow down and listen to what you already know.</p>
+        <div class="sig">— Nyala</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="voices" style="padding-top:40px">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div><span class="kicker">Client Words</span><h2>Felt, not just <em>heard.</em></h2></div>
+        <p>Placeholder testimonials. Replace these with real client feedback before launch.</p>
+      </div>
+      <div class="quotes reveal">
+        <div class="quote"><div class="stars">✦ ✦ ✦ ✦ ✦</div><p>"Client quote goes here: a sentence or two about how the reading helped them."</p><div class="who"><b>Client Name</b>Tarot Reading</div></div>
+        <div class="quote"><div class="stars">✦ ✦ ✦ ✦ ✦</div><p>"Client quote goes here: what surprised them about their birth chart session."</p><div class="who"><b>Client Name</b>Natal Birth Chart</div></div>
+        <div class="quote"><div class="stars">✦ ✦ ✦ ✦ ✦</div><p>"Client quote goes here: how the year-ahead forecast shaped their plans."</p><div class="who"><b>Client Name</b>Year Ahead Forecast</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="book">
+    <div class="wrap reveal">
+      <span class="kicker" style="justify-content:center">Begin</span>
+      <h2>Ask the question<br><span class="shimmer">you've been holding.</span></h2>
+      <p>Choose your reading and share a little about yourself. Nyala reads every intake before your session.</p>
+
+      <form class="intake" id="intake" novalidate>
+        <!-- Step 1: reading type -->
+        <fieldset class="group">
+          <legend><span class="step-n">01</span> Choose your reading</legend>
+          <div class="types">
+            <label class="type"><input type="radio" name="reading" value="t1" required><span><b>One Question Tarot</b><small>One focused question</small></span></label>
+            <label class="type"><input type="radio" name="reading" value="t3"><span><b>Three Question Tarot</b><small>Three questions, one spread each</small></span></label>
+            <label class="type"><input type="radio" name="reading" value="bc"><span><b>Birth Chart Reading</b><small>Your natal chart, explained</small></span></label>
+            <label class="type"><input type="radio" name="reading" value="t30"><span><b>30-Minute Tarot Session</b><small>Open, live conversation</small></span></label>
+            <label class="type"><input type="radio" name="reading" value="combo"><span><b>Birth Chart + Tarot</b><small>The full picture</small></span></label>
+          </div>
+        </fieldset>
+
+        <div class="intake-body" hidden>
+          <!-- Basic details -->
+          <fieldset class="group">
+            <legend><span class="step-n">02</span> About you</legend>
+            <div class="row">
+              <label class="field"><span>Preferred name</span><input name="name" required autocomplete="given-name"></label>
+              <label class="field" data-for="t1 t3 t30 combo"><span>Pronouns <em>optional</em></span><input name="pronouns" placeholder="e.g. she/her, they/them"></label>
+            </div>
+            <label class="field"><span>Email</span><input type="email" name="email" required autocomplete="email"></label>
+          </fieldset>
+
+          <!-- Birth chart details -->
+          <fieldset class="group" data-for="bc combo">
+            <legend><span class="step-n">03</span> <span data-for="bc">Your birth chart</span><span data-for="combo">For your birth chart reading</span></legend>
+            <div class="row">
+              <label class="field"><span>Date of birth</span><input type="date" name="dob" required></label>
+              <label class="field"><span>Exact birth time</span><input type="time" name="birth_time" required></label>
+            </div>
+            <label class="field"><span>Birthplace</span><input name="birthplace" placeholder="City, Region, Country" required></label>
+            <label class="field">
+              <span>Birth time confidence <output id="confOut">5</output>/10</span>
+              <input type="range" name="birth_time_confidence" min="1" max="10" value="5" id="conf">
+              <small class="hint">1 = rough guess, 10 = from a birth certificate. Not sure of your time? Give your best guess and set this low.</small>
+            </label>
+            <label class="field"><span>Main reason for booking</span><textarea name="reason" rows="3" required></textarea></label>
+            <div class="field">
+              <span>Main areas you want to explore</span>
+              <small class="hint">Tap in order of priority. Your first pick is #1.</small>
+              <div class="chips" data-name="chart_areas">
+                <button type="button">Love & relationships</button><button type="button">Career & purpose</button><button type="button">Money & resources</button><button type="button">Family & home</button><button type="button">Personality & strengths</button><button type="button">Health & wellbeing</button><button type="button">Spirituality</button><button type="button">Life timing & cycles</button>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Tarot details -->
+          <fieldset class="group" data-for="t1 t3 t30 combo">
+            <legend><span class="step-n" data-for="t1 t3 t30">03</span><span class="step-n" data-for="combo">04</span> <span data-for="t1 t3 t30">Your tarot reading</span><span data-for="combo">For your tarot reading</span></legend>
+            <label class="field" data-for="t1 t3 combo"><span>Current situation</span><textarea name="situation" rows="3" required placeholder="What's happening in your life right now?"></textarea></label>
+            <label class="field" data-for="t1"><span>Your question</span><input name="question" required></label>
+            <div class="field" data-for="t3">
+              <span>Your three questions</span>
+              <div class="qlist">
+                <label><i>1</i><input name="question_1" required aria-label="Question 1"></label>
+                <label><i>2</i><input name="question_2" required aria-label="Question 2"></label>
+                <label><i>3</i><input name="question_3" required aria-label="Question 3"></label>
+              </div>
+            </div>
+            <label class="field" data-for="t30 combo"><span>Questions</span><textarea name="questions" rows="3" required></textarea></label>
+            <div class="field" data-for="t30 combo">
+              <span>Main areas you want to explore</span>
+              <small class="hint">Tap in order of priority. Your first pick is #1.</small>
+              <div class="chips" data-name="tarot_areas">
+                <button type="button">Love & relationships</button><button type="button">Career & work</button><button type="button">Money</button><button type="button">Family & friends</button><button type="button">Personal growth</button><button type="button">Health & wellbeing</button><button type="button">Spiritual path</button><button type="button">A decision</button>
+              </div>
+            </div>
+            <label class="field" data-for="t1 t3 combo"><span>Anything you specifically want to focus on <em>optional</em></span><textarea name="focus" rows="2"></textarea></label>
+          </fieldset>
+
+          <label class="field" data-for="bc t30 combo"><span>Anything else you'd like Nyala to know <em>optional</em></span><textarea name="anything_else" rows="3"></textarea></label>
+
+          <div class="submit-row">
+            <button type="submit" class="btn btn-light">Send my intake <svg><use href="#i-arrow"/></svg></button>
+            <p class="form-error" id="formError" role="alert"></p>
+          </div>
+        </div>
+      </form>
+
+      <div class="thanks" id="thanks" hidden>
+        <h3>Thank you, <span id="thanksName"></span>.</h3>
+        <p>Your intake is in. Nyala will email you to confirm a time for your session.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Clarity begins with a good question.</span>
+    <nav><a href="#">Instagram</a><a href="#">TikTok</a><a href="mailto:hello@thenyala.com">Email</a></nav>
+    <span>TheNyala © <span id="yr"></span></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

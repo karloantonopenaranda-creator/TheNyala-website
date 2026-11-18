@@ -1,0 +1,6 @@
+﻿{
+    "provenance":  "Client-supplied terracotta background; original colors preserved, encoded as JPEG. No AI-generated artwork.",
+    "transform":  "860x700 crop at x=540, y=210",
+    "build":  "tools/build-paper.ps1",
+    "source":  "assets/Background/12.png"
+}

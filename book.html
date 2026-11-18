@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Begin Your Reading — TheNyala</title>
+<meta name="description" content="Book a one-to-one tarot or birth-chart reading with TheNyala, as a PDF with an audio recording or live by video call.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preload" as="font" type="font/ttf" href="assets/fonts/Anaktoria.ttf" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/paper-symbols.js" defer></script>
+</head>
+<body class="page-booking">
+
+<!-- A focused booking page on the client's rust paper, one screen tall: the glade sits on it at the left, the intake box lies on it at the right and scrolls inside -->
+<main class="booking">
+  <div class="book-card">
+    <div class="book-pane">
+      <a class="wordmark book-wordmark" href="index.html">TheNyala</a>
+      <img class="book-nyala" src="assets/nyala.webp" alt="" width="572" height="1744">
+      <div class="book-pane-copy">
+        <h1>Begin Your Reading</h1>
+        <p id="pane-sub">One-to-one readings, written and recorded for you or live by video call. Your reader prepares from what you write here, then emails you to confirm the details.</p>
+      </div>
+    </div>
+
+    <div class="book-main">
+      <div class="book-scroll"><!-- the form scrolls inside the box -->
+      <div class="book-head">
+        <h2 class="book-title">Your intake</h2>
+        <p class="book-sub">Not sure which reading? <a href="index.html#readings">Compare them</a></p>
+      </div>
+
+      <!-- Submissions aren't sent anywhere yet: connect the form to email or a form service before launch (see js/booking.js) -->
+      <form class="intake" id="intake" novalidate>
+    <fieldset class="intake-step">
+      <legend class="intake-legend">Your reading</legend>
+      <div class="picks">
+        <label class="pick"><input type="radio" name="reading" value="tarot"><span>Digital Tarot Reading</span></label>
+        <label class="pick"><input type="radio" name="reading" value="chart"><span>Birth Chart Reading</span></label>
+        <label class="pick"><input type="radio" name="reading" value="combo"><span>Birth Chart + Tarot Reading</span></label>
+      </div>
+      <p class="field-error" id="reading-error" role="alert"></p>
+      <div class="intake-nudge" id="reading-nudge">
+        <p>Choose a reading and the details it needs will appear below.</p>
+        <ol class="book-steps">
+          <li><b>Choose your reading</b><span>Pick the one that fits the question you're carrying.</span></li>
+          <li><b>Share a little about yourself</b><span>Only what your reader needs for that reading.</span></li>
+          <li><b>Your reader emails you</b><span>They read your intake first, then confirm a time for your video call or when your recording will be ready.</span></li>
+        </ol>
+      </div>
+    </fieldset>
+
+    <div class="intake-panel" hidden>
+      <fieldset class="intake-group">
+        <legend class="intake-legend">About you</legend>
+        <div class="row">
+          <label class="field"><span class="field-label">Preferred name</span><input name="name" autocomplete="given-name" required></label>
+          <label class="field" data-for="tarot session combo"><span class="field-label">Pronouns <em>optional</em></span><input name="pronouns" placeholder="e.g. she/her, they/them"></label>
+        </div>
+        <label class="field"><span class="field-label">Email</span><input type="email" name="email" autocomplete="email" required><small class="hint">Your reader will use this to confirm the details with you.</small></label>
+      </fieldset>
+
+      <fieldset class="intake-group" data-for="chart combo">
+        <legend class="intake-legend">Your birth chart</legend>
+        <div class="row">
+          <label class="field"><span class="field-label">Date of birth</span><input type="date" name="dob" required></label>
+          <label class="field"><span class="field-label">Exact birth time</span><input type="time" name="birth_time" required></label>
+        </div>
+        <label class="field"><span class="field-label">Birthplace</span><input name="birthplace" placeholder="City, region, country" required></label>
+        <label class="field">
+          <span class="field-label">How sure are you of your birth time? <output id="conf-out" for="conf">5</output> out of 10</span>
+          <input type="range" id="conf" name="birth_time_confidence" min="1" max="10" value="5">
+          <span class="range-ends" aria-hidden="true"><span>A rough guess</span><span>From my birth certificate</span></span>
+          <small class="hint">Not sure of your time? Give your best guess above and set this low.</small>
+        </label>
+        <label class="field"><span class="field-label">Main reason for booking</span><textarea name="reason" rows="3" required></textarea></label>
+        <div class="field">
+          <span class="field-label" id="chart-areas-label">Main areas you want to explore</span>
+          <small class="hint">Tap them in order of importance; your first choice is number 1.</small>
+          <div class="chips" data-name="chart_areas" role="group" aria-labelledby="chart-areas-label">
+            <button type="button">Love and relationships</button><button type="button">Career and purpose</button><button type="button">Money and resources</button><button type="button">Family and home</button><button type="button">Personality and strengths</button><button type="button">Health and wellbeing</button><button type="button">Spirituality</button><button type="button">Life timing and cycles</button>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- One group for every tarot format: "tarot" parts are the question readings (PDF and audio), "session" parts the live 30-minute session -->
+      <fieldset class="intake-group" data-for="tarot session">
+        <legend class="intake-legend">Your tarot reading</legend>
+        <div class="field">
+          <span class="field-label" id="format-label">How would you like your reading?</span>
+          <div class="seg" role="radiogroup" aria-labelledby="format-label" aria-describedby="format-hint">
+            <label><input type="radio" name="tarot_format" value="one" checked><span>One question</span></label>
+            <label><input type="radio" name="tarot_format" value="three"><span>Three questions</span></label>
+            <label><input type="radio" name="tarot_format" value="session"><span>Live 30-minute session</span></label>
+          </div>
+          <small class="hint" id="format-hint">One or three questions come as a PDF with an audio recording; the session is live by video call.</small>
+        </div>
+        <label class="field" data-for="tarot"><span class="field-label">Current situation</span><textarea name="situation" rows="3" placeholder="What's happening in your life right now?" required></textarea></label>
+        <label class="field" data-q="one"><span class="field-label">Your question</span><input name="question" required></label>
+        <div class="field" data-q="three">
+          <span class="field-label">Your three questions</span>
+          <div class="qlist">
+            <label><span class="qnum" aria-hidden="true">1</span><input name="question_1" aria-label="Question 1" required></label>
+            <label><span class="qnum" aria-hidden="true">2</span><input name="question_2" aria-label="Question 2" required></label>
+            <label><span class="qnum" aria-hidden="true">3</span><input name="question_3" aria-label="Question 3" required></label>
+          </div>
+        </div>
+        <label class="field" data-for="session"><span class="field-label">Your questions</span><textarea name="questions" rows="3" placeholder="Bring as many as you like." required></textarea></label>
+        <div class="field" data-for="session">
+          <span class="field-label" id="session-areas-label">Main areas you want to explore</span>
+          <small class="hint">Tap them in order of importance; your first choice is number 1.</small>
+          <div class="chips" data-name="session_areas" role="group" aria-labelledby="session-areas-label">
+            <button type="button">Love and relationships</button><button type="button">Career and work</button><button type="button">Money</button><button type="button">Family and friends</button><button type="button">Personal growth</button><button type="button">Health and wellbeing</button><button type="button">Spiritual path</button><button type="button">A decision</button>
+          </div>
+        </div>
+        <label class="field" data-for="tarot"><span class="field-label">Anything you specifically want to focus on <em>optional</em></span><textarea name="focus" rows="2"></textarea></label>
+      </fieldset>
+
+      <fieldset class="intake-group" data-for="combo">
+        <legend class="intake-legend">Your tarot reading</legend>
+        <label class="field"><span class="field-label">Current situation</span><textarea name="situation" rows="3" placeholder="What's happening in your life right now?" required></textarea></label>
+        <label class="field"><span class="field-label">Your questions</span><textarea name="questions" rows="3" required></textarea></label>
+        <div class="field">
+          <span class="field-label" id="combo-areas-label">Main areas you want to explore in the cards</span>
+          <small class="hint">Tap them in order of importance; your first choice is number 1.</small>
+          <div class="chips" data-name="tarot_areas" role="group" aria-labelledby="combo-areas-label">
+            <button type="button">Love and relationships</button><button type="button">Career and work</button><button type="button">Money</button><button type="button">Family and friends</button><button type="button">Personal growth</button><button type="button">Health and wellbeing</button><button type="button">Spiritual path</button><button type="button">A decision</button>
+          </div>
+        </div>
+        <label class="field"><span class="field-label">Anything you specifically want to focus on <em>optional</em></span><textarea name="focus" rows="2"></textarea></label>
+      </fieldset>
+
+      <!-- Every reading with tarot in it asks for a preferred date (built by js/booking.js); the reader confirms the time -->
+      <fieldset class="intake-group" data-for="tarot session combo">
+        <legend class="intake-legend">Your reading date</legend>
+        <div class="field">
+          <span class="field-label" id="date-label">Preferred date</span>
+          <small class="hint">Your reader will confirm it with you by email.</small>
+          <!-- the month on the left, the chosen day written out on the right (below it on phones) -->
+          <div class="datepick" role="group" aria-labelledby="date-label">
+            <div class="datepick-cal">
+              <div class="datepick-head">
+                <p class="datepick-month" aria-live="polite"></p>
+                <div class="datepick-navs">
+                  <button type="button" class="datepick-nav" aria-label="Previous month"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  <button type="button" class="datepick-nav" aria-label="Next month"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                </div>
+              </div>
+              <div class="datepick-week" aria-hidden="true"></div>
+              <div class="datepick-days"></div>
+            </div>
+            <div class="datepick-summary">
+              <p class="datepick-picked sr-only" aria-live="polite"></p>
+              <div class="datepick-show" aria-hidden="true"><span class="datepick-num"></span><span class="datepick-dayname"></span><span class="datepick-monthname"></span></div>
+              <p class="datepick-empty"><b>No date yet</b><span>Choose any open day on the calendar.</span></p>
+            </div>
+            <input type="hidden" name="preferred_date">
+          </div>
+        </div>
+      </fieldset>
+
+      <label class="field intake-last" data-for="chart session combo"><span class="field-label">Anything else you'd like your reader to know <em>optional</em></span><textarea name="anything_else" rows="3"></textarea></label>
+
+      <div class="submit-row">
+        <button type="submit" class="book-submit">Send my intake <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z" fill="currentColor"/></svg></button>
+        <p class="form-summary" id="form-summary" role="alert"></p>
+      </div>
+    </div>
+      </form>
+
+      <div class="intake-thanks" id="thanks" hidden tabindex="-1">
+        <h2>Thank you</h2>
+        <p>Your <strong id="thanks-reading"></strong> intake is in, <span id="thanks-name"></span>. <span id="thanks-next"></span></p>
+        <a class="hero-cta" href="index.html">Back to the home page</a>
+      </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="js/booking.js"></script>
+</body>
+</html>

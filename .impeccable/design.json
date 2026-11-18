@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-28T20:15:00Z",
+  "title": "Design System: TheNyala",
+  "extensions": {
+    "colorMeta": {
+      "forest-deep": { "role": "neutral", "displayName": "Forest Deep", "tonalRamp": ["#050d0a", "#081610", "#0c1f19", "#163327", "#244a3a", "#3c6955", "#6f9886", "#b6cfc3"] },
+      "forest-night": { "role": "neutral", "displayName": "Forest Night", "tonalRamp": ["#050c08", "#0a160f", "#0e1f16", "#172f22", "#264433", "#3f6150", "#728f80", "#b8cbbf"] },
+      "forest-shade": { "role": "neutral", "displayName": "Forest Shade", "canonical": "rgba(6, 22, 14, 0.62)" },
+      "moonlight": { "role": "primary", "displayName": "Moonlight White", "tonalRamp": ["#3b4038", "#5c6358", "#7f877a", "#a3ab9d", "#c3cabd", "#dbe1d5", "#eef3e8", "#f8fbf5"] },
+      "moonlight-muted": { "role": "neutral", "displayName": "Muted Moonlight", "canonical": "rgba(232, 239, 228, 0.9)" },
+      "moonlight-rule": { "role": "neutral", "displayName": "Bracket Rule", "canonical": "rgba(232, 238, 226, 0.38)" }
+    },
+    "typographyMeta": {
+      "wordmark": { "displayName": "Wordmark", "purpose": "TheNyala set horizontally at the top left, level with the menu." },
+      "display": { "displayName": "Display", "purpose": "Hero headline, two balanced lines." },
+      "body": { "displayName": "Body", "purpose": "Hero lede, max 44ch." },
+      "label": { "displayName": "Label", "purpose": "Navigation and CTA." }
+    },
+    "shadows": [
+      { "name": "figure", "value": "none (backlit): canopy cast, height-sampled haze and a warm up-facing rim light baked into assets/nyala-lit.webp", "purpose": "Nyala shares the forest light instead of floating on it." },
+      { "name": "cta-lift", "value": "0 8px 22px rgba(2, 10, 4, 0.35)", "purpose": "Ghost CTA at rest; hover 0 10px 28px rgba(2, 10, 4, 0.45)." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "CTA hover fill and icon turn." }
+    ],
+    "breakpoints": [
+      { "name": "narrow", "value": "900px" },
+      { "name": "phone", "value": "560px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Offer Card",
+      "kind": "card",
+      "refersTo": "components.offer-card",
+      "description": "One reading on the pricing page: price, name, description, what's included with leaf bullets, and a full-width CTA. On the site, js/vines.js adds growing ivy at two corners.",
+      "html": "<div class=\"ds-offer\"><p class=\"ds-price\">Price coming soon</p><h3>Tarot Reading</h3><p class=\"ds-desc\">A focused spread for the question on your mind, read live with you.</p><ul><li>Live one-to-one video call</li><li>Built around your questions</li></ul><a href=\"#\">Choose this reading</a></div>",
+      "css": ".ds-offer { width: 260px; padding: 30px 26px 26px; background: rgba(12,30,20,.92); border: 1px solid rgba(232,238,226,.2); border-radius: 6px; box-shadow: 0 18px 40px rgba(2,10,6,.35); color: #eef3e8; font: 400 14.5px/1.5 'Hanken Grotesk', system-ui, sans-serif; transition: transform .6s cubic-bezier(.16,1,.3,1), border-color .4s; } .ds-offer:hover { transform: translateY(-5px); border-color: rgba(232,238,226,.36); } .ds-price { margin: 0 0 18px; font-size: 23px; font-weight: 300; } .ds-offer h3 { margin: 0 0 8px; font-size: 21px; font-weight: 500; } .ds-desc { margin: 0 0 18px; color: rgba(232,239,228,.8); } .ds-offer ul { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 10px; font-size: 14px; } .ds-offer li { padding-left: 22px; position: relative; } .ds-offer li::before { content: ''; position: absolute; left: 0; top: .25em; width: 13px; height: 13px; border-radius: 0 100% 0 100%; background: #94c86a; } .ds-offer a { display: flex; justify-content: center; padding: 10px 16px; border: 1px solid rgba(232,238,226,.45); border-radius: 3px; color: #eef3e8; text-decoration: none; font-size: 14px; background: rgba(20,40,25,.45); } .ds-offer a:hover { background: rgba(232,238,226,.14); border-color: rgba(232,238,226,.8); } .ds-offer a:focus-visible { outline: 1px solid #eef3e8; outline-offset: 4px; }"
+    },
+    {
+      "name": "Ghost CTA",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "The single primary action: a moonlight hairline frame on dark frosted fill.",
+      "html": "<a class=\"ds-cta\" href=\"#book\">Find Your Path <svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><path d=\"M8 1.5c.4 3.3 2.2 5.1 5.5 5.5-3.3.4-5.1 2.2-5.5 5.5-.4-3.3-2.2-5.1-5.5-5.5 3.3-.4 5.1-2.2 5.5-5.5Z\" fill=\"currentColor\"/></svg></a>",
+      "css": ".ds-cta { display: inline-flex; align-items: center; gap: 10px; padding: 10px 13px 10px 16px; border-radius: 3px; font: 400 14px/1.2 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: .01em; color: #eef3e8; text-decoration: none; border: 1px solid rgba(232,238,226,.45); background: rgba(20,40,25,.45); backdrop-filter: blur(6px); box-shadow: 0 8px 22px rgba(2,10,4,.35); transition: background .35s cubic-bezier(.16,1,.3,1), border-color .35s, box-shadow .35s; } .ds-cta svg { width: 14px; height: 14px; transition: rotate .6s cubic-bezier(.16,1,.3,1); } .ds-cta:hover { background: rgba(232,238,226,.14); border-color: rgba(232,238,226,.8); box-shadow: 0 10px 28px rgba(2,10,4,.45); } .ds-cta:hover svg { rotate: 90deg; } .ds-cta:focus-visible { outline: 1px solid #eef3e8; outline-offset: 4px; }"
+    },
+    {
+      "name": "Dot Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Top-right links separated by small moonlight dots.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#readings\">Readings</a><a href=\"#draw\">Daily Card</a><a href=\"#about\">About</a><a href=\"#voices\">Reviews</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; background: #0c1f19; padding: 8px; } .ds-nav a { position: relative; padding: 8px 13px; font: 400 14px 'Hanken Grotesk', system-ui, sans-serif; letter-spacing: .01em; color: rgba(238,243,233,.9); text-decoration: none; text-shadow: 0 1px 10px rgba(2,12,6,.55); transition: color .3s; } .ds-nav a + a::before { content: ''; position: absolute; left: -1.5px; top: 50%; width: 3px; height: 3px; margin-top: -1.5px; border-radius: 50%; background: rgba(232,238,226,.45); } .ds-nav a:hover { color: #eef3e8; } .ds-nav a:focus-visible { outline: 1px solid #eef3e8; outline-offset: 4px; }"
+    },
+    {
+      "name": "Corner Bracket Frame",
+      "kind": "custom",
+      "refersTo": "spacing.bracket",
+      "description": "Four hairline corners marking a reading zone without boxing it.",
+      "html": "<div class=\"ds-frame\"><span class=\"tl\"></span><span class=\"tr\"></span><span class=\"bl\"></span><span class=\"br\"></span><p>The stars remember what you've forgotten.</p></div>",
+      "css": ".ds-frame { position: relative; padding: 28px 32px; background: #0c1f19; color: #eef3e8; font: 300 22px/1.2 'Hanken Grotesk', system-ui, sans-serif; } .ds-frame span { position: absolute; width: 16px; height: 16px; border: 0 solid rgba(232,238,226,.38); } .ds-frame .tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; } .ds-frame .tr { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; } .ds-frame .bl { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; } .ds-frame .br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; } .ds-frame p { margin: 0; }"
+    },
+    {
+      "name": "Wordmark",
+      "kind": "custom",
+      "refersTo": "typography.wordmark",
+      "description": "TheNyala in the hand-drawn brand font, top left, level with the menu.",
+      "html": "<p class=\"ds-wordmark\">TheNyala</p>",
+      "css": "@font-face { font-family: 'The Nyala Font'; src: url('assets/fonts/TheNyalaFont-Regular.ttf') format('truetype'); } .ds-wordmark { display: inline-flex; align-items: center; height: 40px; margin: 0; padding: 12px 20px; background: #0c1f19; font: 400 34px/1 'The Nyala Font', 'Hanken Grotesk', system-ui, sans-serif; color: rgba(232,238,226,.9); white-space: nowrap; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Nyala in the Glade",
+    "overview": "The first screen is a single image: Nyala, the brand spirit, standing large and centred before an anime-style painted pine forest, with sunlight glowing through the treetops, floating sparkles of light and bright grass below. Nyala is the focal point; the forest is the world she stands in. Around her, the interface is quiet signage: thin moonlight type, a vertical wordmark, hairline corner brackets, and one small framed button. The mood is hushed and unhurried. There are no decorative props, glows or particle effects added by the interface; the painting supplies the light and mood, and Nyala supplies the focus. Type is light and sparse.",
+    "keyCharacteristics": [
+      "An anime-style painted forest as the ground, lightly shaded at the top, sides and lower band, bright and glowing at the centre",
+      "Nyala large, sharp and centred, the only focal element",
+      "The Nyala Font, a hand-drawn storybook script, for the wordmark and headline; a light grotesk for everything else",
+      "Hairline corner brackets frame the reading zone",
+      "No props, glows or ambient animation in the hero"
+    ],
+    "rules": [
+      { "name": "The Painting Carries the Colour Rule", "body": "Colour comes from the forest painting and from Nyala herself. The interface adds no accent colour, glow or tint.", "section": "colors" },
+      { "name": "The No-Accent-Button Rule", "body": "The primary action is a moonlight hairline frame on a dark frosted fill, not a coloured button.", "section": "colors" },
+      { "name": "The Script Is a Voice Rule", "body": "The Nyala Font sets only the wordmark and headlines; body copy, labels, buttons and numbers stay in Hanken Grotesk. One weight, no synthesised bold or light.", "section": "typography" },
+      { "name": "The No-Kicker Rule", "body": "No eyebrow or kicker labels above headings. The headline speaks for itself.", "section": "typography" },
+      { "name": "The One Figure Rule", "body": "Nyala is the only figure in the hero. Anything else belongs to the painting or the interface layer, never between.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep interface type in moonlight white, at weights 200–400.",
+      "Do keep the forest bright and glowing at the centre, behind Nyala; shade only where text sits.",
+      "Do shade the painting where type sits (top edge, sides, lower band) rather than boxing the type.",
+      "Do frame reading zones with hairline corner brackets rather than boxes or cards."
+    ],
+    "donts": [
+      "Don't add props, glows, particles or ambient animation to the hero.",
+      "Don't use gradient text, kicker labels or coloured accent buttons in this world.",
+      "Don't place copy over Nyala; size her so she clears the headline.",
+      "Don't carry the legacy section styles (Plus Jakarta Sans headings, pill buttons, rounded cards, shimmer text) into new surfaces."
+    ]
+  }
+}
