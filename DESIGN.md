@@ -148,6 +148,20 @@ components:
 
 ## Overview
 
+### Motion layer: GSAP, Lenis and ports of React Bits effects — 24 November 2026
+
+The user asked for better UI/UX using GSAP, Lenis and React Bits, keeping the look (refinement, not redesign). The site stays plain HTML/CSS/JS with no build step: GSAP 3.15.1 with ScrollTrigger (GreenSock's standard no-charge licence) and Lenis 1.3.27 (MIT) are kept in `js/vendor/`; React Bits is React-only, so the chosen effects are ported to plain JS. ("Seenry" in the request was left out: the user wasn't sure which library it was.)
+
+- **Scroll writing, now on GSAP.** `js/ink.js` is the pen, shared by both pages: the same choreography and timings as before (letters 0.025s, words 0.03s, the leaves' paper, frame, rules, Vitruvian lines and engraving), built as GSAP timelines and started once per piece by ScrollTrigger (`js/section-transitions.js`). Pseudo-element parts are driven through custom properties (`--leaf`, `--rule`, `--rule-star`, `--star`, `--sketch`). Pieces in view at load are held back by `.ink-pending` (set by an inline script in each page's head) until prepared, with a 2.5s CSS failsafe; without scripts everything shows. Still plays with reduced motion (in-place reveals).
+- **Deck deal.** The colored decks are dealt instead of faded: squared up a little low, then fanned out from under the front card (1.1s, `power3.out`); once dealt, a deck spreads slightly under a mouse (outer cards 12px and 5° further out, front card up 6px). A fade with reduced motion; no hover on touch.
+- **Lenis smooth scrolling** (`js/motion.js`), driven by GSAP's ticker. Lenis follows reduced motion by itself (no smoothing, instant jumps). Nested scroll boxes (the intake on wide screens) keep native scrolling.
+- **Same-page links glide** to their section (1.3s, quartic ease-out), update the address and move focus to the section (no ring is drawn on the section). The placeholder Daily Card link goes nowhere, is dimmed to 72% and says "Coming soon" on hover or focus (`aria-disabled`).
+- **Compact bar** (home page, supersedes "the menu scrolls away" for wayfinding below the first screen): once the hero has scrolled away, scrolling up brings back a 58px strip (52px on phones) of the deep rust-brown panel (92%) with a cream hairline and warm shadow, holding the wordmark (back to the top) and Readings and Reviews in Anaktoria; the section in view is underlined (`aria-current="location"`). Hidden and inert while scrolling down or on the first screen; a fade with reduced motion. The first-screen menu is unchanged.
+- **Page sheet** between home and booking: leaving, a sheet of the orange paper slides up over the page (0.46s); the next page opens under it and the sheet lifts away (0.75s), and the first writing waits for it. Arriving is pure CSS (`.is-arriving` from the head script); a cross-fade with reduced motion; the back/forward cache is handled.
+- **Magnet** (after React Bits' Magnet): framed buttons lean towards a mouse within 40px, at 14% of the distance, 6px at most, easing back on leaving. Mouse only; off with reduced motion.
+- **Booking page** (`js/booking-motion.js`, which only watches `js/booking.js`): "Begin Your Reading" and its line are written on arrival; choosing a reading rewrites the line in ink; newly needed question groups unfold one after another (0.5s, 14px rise; a fade with reduced motion); a chosen date is drawn into the panel; chip numbers settle in (CSS); the thank-you note is written out.
+- **Review hint** says "Click the scroll…" to mouse users and "Tap the scroll…" on touch screens.
+
 ### Type, buttons, and scroll response — 17 November 2026
 
 Anaktoria now sets the wordmark, display headings, and page titles as well as the existing introductions, prices, and framed button labels. Hanken Grotesk remains on compact descriptions and form controls for legibility. The original Nyala font file remains in `assets/fonts/` but is no longer loaded for active headings; the pages preload Anaktoria instead.

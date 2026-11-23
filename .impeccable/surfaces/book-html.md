@@ -7,6 +7,8 @@ related_targets: []
 
 # Begin Your Reading (booking intake)
 
+Motion layer (24 November 2026, Operate surface: nothing waits on motion): the page opens under the paper sheet when coming from the home page; "Begin Your Reading" and its line are written in ink; choosing a reading rewrites that line; newly needed question groups unfold one after another; a chosen date is drawn into its panel; chip numbers settle in; the thank-you is written out. `js/booking-motion.js` only watches `js/booking.js`, which is unchanged. Lenis leaves the intake box's own scrolling native. See DESIGN.md "Motion layer".
+
 Current shared background (9 November 2026): use `assets/Background/Orange Background.png` directly, centered with cover and no repetition. This supersedes older `paper.jpg` / `Background/12.png` references. The landing collage and masked cream intake paper remain separate.
 
 Updated 9 November 2026: the user requested the border and background from `assets/Intake Form/` for the form panel.

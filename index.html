@@ -12,6 +12,16 @@
 <link rel="preload" as="image" href="assets/Background/The%20Nyla%20x%20Vitruvian%20Man.png">
 <link rel="preload" as="font" type="font/ttf" href="assets/fonts/Anaktoria.ttf" crossorigin>
 <link rel="stylesheet" href="css/style.css">
+<link rel="prefetch" href="book.html">
+<!-- Before the first paint: hold back the pieces the pen will write (css "Scroll writing"), and, if we came from the
+     booking page, open under the paper sheet that will lift away (css "Page sheet"). -->
+<script>document.documentElement.classList.add('ink-pending');try{if(sessionStorage.getItem('nyala-sheet')){sessionStorage.removeItem('nyala-sheet');document.documentElement.classList.add('is-arriving')}}catch(e){}</script>
+<!-- GSAP 3.15.1 with ScrollTrigger (GreenSock standard no-charge licence) and Lenis 1.3.27 (MIT), kept in js/vendor -->
+<script src="js/vendor/gsap.min.js" defer></script>
+<script src="js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="js/vendor/lenis.min.js" defer></script>
+<script src="js/ink.js" defer></script>
+<script src="js/motion.js" defer></script>
 <script src="js/paper-symbols.js" defer></script>
 <script src="js/hero-video.js" defer></script>
 <script src="js/section-transitions.js" defer></script>
@@ -24,10 +34,19 @@
   <!-- Daily Card remains a placeholder until its section is ready. -->
   <nav class="nav home-nav" aria-label="Primary">
     <a href="#readings">Readings</a>
-    <a href="#">Daily Card</a>
+    <a href="#" aria-disabled="true">Daily Card</a>
     <a href="#reviews">Reviews</a>
   </nav>
 </header>
+
+<!-- The compact bar: returns on scrolling up once the first screen has gone (js/motion.js); hidden and inert until then -->
+<div class="topbar" inert>
+  <a class="topbar-mark" href="#top" aria-label="TheNyala, back to the top">TheNyala</a>
+  <nav class="topbar-nav" aria-label="Sections">
+    <a href="#readings">Readings</a>
+    <a href="#reviews">Reviews</a>
+  </nav>
+</div>
 
 <!-- The collage belongs only to the hero; readings retain the terracotta paper. -->
 <main>

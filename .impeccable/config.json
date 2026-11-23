@@ -56,6 +56,30 @@
         ],
         "createdAt": "2026-11-18T06:39:53.955Z",
         "reason": "Agent: the only zero-offset shadows are inset warm-brown edge darkening on the parchment pricing leaves (.plan::before, #784e24) and review scrolls (.story-paper-inner::before, #69411c), an aged-paper effect, not a glow; both live in the shared css/style.css"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "the nyala font",
+        "createdAt": "2026-11-23T19:01:45.485Z",
+        "reason": "Agent: pre-existing @font-face kept on purpose; DESIGN.md Overview (17 Nov 2026) records the Nyala font file is retained but no longer used for headings; no rule references it, so it is never downloaded"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "book.html"
+        ],
+        "createdAt": "2026-11-23T19:02:27.583Z",
+        "reason": "Agent: flagged pairs (#3c2118 intake ink, #71594b hints) sit on the masked cream intake paper (.book-main::before, ~#efebe3; hint about 5.4:1), not on the orange page colour #8f3f20; the detector cannot see pseudo-element background layers"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-23T19:10:52.274Z",
+        "reason": "Agent: pre-existing; the flush child is the full-bleed hero background video (.hero-video, inset 0, aria-hidden) that fills the section by design; the hero's text is inset (wordmark at 2vw, copy at 9.8% padding)"
       }
     ]
   }

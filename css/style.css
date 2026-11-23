@@ -791,84 +791,113 @@ body::before { /* original orange paper, shared by readings, reviews and the boo
   .reviews-section .reviews-intro { padding-top: 40px; }
 }
 
-/* ---------- Scroll writing: each section is written and drawn onto the paper as it comes into view ----------
-   js/section-transitions.js marks the pieces, splits their text into strokes and times them (--t: when a line starts,
-   --step: the time between its strokes, --i: a stroke's place in its line, --d: the piece's own start). Without the
-   script everything simply shows. Each stroke (a letter in headings, a word elsewhere) is inked in from left to right,
-   deepening as it dries. On the pricing leaves the paper is laid down, the double frame is drawn round it, the
-   Vitruvian circle, square and triangle are drawn in turn and the engraving is sketched in; buttons and the review
-   scrolls are drawn across. These are in-place reveals, so they play with reduced motion too; only the colored decks'
-   small rise needs motion allowed. Every animation fills backwards only, so nothing is left behind once played. */
-.has-section-transitions .section-reveal:not(.is-visible) { opacity: 0; }
-.has-section-transitions .section-reveal.is-visible { animation: reveal-fade .7s ease-out var(--d, 0s) backwards; }
-@keyframes reveal-fade { from { opacity: 0; } }
-@media (prefers-reduced-motion: no-preference) {
-  .has-section-transitions .section-reveal.is-visible { animation-name: reveal-rise; animation-duration: .8s; animation-timing-function: cubic-bezier(.22, 1, .36, 1); }
-  @keyframes reveal-rise { from { opacity: 0; translate: 0 14px; } }
-}
-
-/* writing: each stroke is a small inline box, inked in from left to right */
+/* ---------- Scroll writing: each piece is written and drawn onto the paper as it comes into view ----------
+   js/ink.js (GSAP) writes each piece: headings letter by letter, other text word by word, each stroke inked in from
+   left to right; on the pricing leaves the paper, the double frame, the Vitruvian lines and the engraving are drawn in
+   turn. It sets and clears its own inline styles; the stylesheet only gives it the strokes' boxes and, for the parts
+   drawn by pseudo-elements, custom properties to drive. Without the scripts everything simply shows. */
 .ink-word { white-space: nowrap; }
 .ink-unit { display: inline-block; }
-.has-section-transitions .ink-piece:not(.is-visible) .ink-unit { clip-path: inset(-30% 100% -30% -12%); }
-.has-section-transitions .ink-piece.is-visible .ink-unit {
-  animation: ink-write calc(var(--step, .03s) * 3) linear calc(var(--d, 0s) + var(--t, 0s) + var(--i, 0) * var(--step, .03s)) backwards; /* about one stroke at a time, like a pen */
+/* Held back from the first paint until the script has prepared them (an inline script in each page's head sets
+   .ink-pending; js/section-transitions.js or js/booking-motion.js removes it). If the scripts never run, they show
+   anyway after 2.5s. */
+.ink-pending :is(.hero--collage .hero-frame, .readings .pricing-intro, .readings .deck-fan, .readings .offer,
+  .reviews-section .reviews-intro-copy, .reviews-section .deck-fan, .reviews-section .review-story, .book-pane-copy) {
+  visibility: hidden; animation: ink-failsafe 0s 2.5s forwards;
 }
-@keyframes ink-write {
-  from { clip-path: inset(-30% 100% -30% -12%); opacity: .45; }
-  60%  { opacity: 1; }
-  to   { clip-path: inset(-30% -12% -30% -12%); }
+@keyframes ink-failsafe { to { visibility: visible; } }
+.plan::before { opacity: var(--leaf, 1); } /* the leaf's paper is laid down first */
+.plan-name::after, .plan-includes::before { /* the rules drawn out from their stars */
+  background-size: calc(var(--rule, 1) * 100%) 1px; color: rgb(110 31 18 / var(--rule-star, 1));
+}
+.plan-list li::before { opacity: var(--star, 1); } /* each star with its own line */
+.plan-engraving.is-sketching { /* sketched in on a slant: a soft-edged mask sweeps across */
+  -webkit-mask: linear-gradient(110deg, #000 42%, transparent 58%) calc(var(--sketch, 0) * 100%) 0 / 260% 100% no-repeat;
+  mask: linear-gradient(110deg, #000 42%, transparent 58%) calc(var(--sketch, 0) * 100%) 0 / 260% 100% no-repeat;
+}
+/* a dealt deck spreads a little under a mouse (js/section-transitions.js) */
+@media (hover: hover) and (pointer: fine) { .deck-fan.can-spread { pointer-events: auto; } }
+
+/* ---------- Smooth scrolling (Lenis, js/motion.js) ----------
+   Lenis drives the scroll itself, so the browser's own smooth scrolling (set at the top for when it isn't running)
+   steps aside. */
+html.lenis, html.lenis body { height: auto; }
+html.lenis { scroll-behavior: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+/* a section reached from a link takes focus (so keyboard users carry on from there) without drawing a ring round it */
+main > section[tabindex="-1"]:focus { outline: none; }
+
+/* ---------- The compact bar (home page, js/motion.js) ----------
+   Returns on scrolling up once the first screen has gone, so Readings and Reviews are always a moment away; hidden and
+   inert otherwise. A strip of the deep rust-brown panel with the cream wordmark and links. */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 60;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  height: 58px; padding: 0 var(--edge);
+  background: rgba(48, 14, 8, .92); border-bottom: 1px solid rgba(240, 232, 220, .16);
+  box-shadow: 0 10px 28px rgba(26, 6, 3, .32);
+  translate: 0 -110%; visibility: hidden;
+  transition: translate .3s cubic-bezier(.4, 0, 1, 1), visibility 0s .3s;
+}
+.topbar.is-shown { translate: 0 0; visibility: visible; transition: translate .5s cubic-bezier(.16, 1, .3, 1), visibility 0s; }
+.topbar-mark { font-family: var(--brand-face); font-size: 26px; line-height: 1; color: rgba(246, 240, 230, .95); }
+.topbar-nav { display: flex; gap: 28px; }
+.topbar-nav a {
+  display: inline-flex; align-items: center; min-height: 44px;
+  font-family: var(--second-face); font-size: 18px; font-variant-ligatures: no-contextual; line-height: 1;
+  color: rgba(240, 233, 222, .86); text-decoration: underline transparent; text-underline-offset: 6px; text-decoration-thickness: 1px;
+  transition: color .2s, text-decoration-color .2s;
+}
+.topbar-nav a:hover, .topbar-nav a:focus-visible { color: var(--moon); text-decoration-color: rgba(240, 232, 220, .55); }
+.topbar-nav a[aria-current] { color: var(--moon); text-decoration-color: currentColor; }
+@media (max-width: 640px) {
+  .topbar { height: 52px; padding: 0 20px; }
+  .topbar-mark { font-size: 23px; }
+  .topbar-nav { gap: 20px; }
+  .topbar-nav a { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .topbar { translate: none; opacity: 0; transition: opacity .2s, visibility 0s .2s; }
+  .topbar.is-shown { opacity: 1; transition: opacity .2s, visibility 0s; }
 }
 
-/* blocks drawn across as a whole: the framed buttons, the review scrolls and the avatars */
-.has-section-transitions .ink-piece:not(.is-visible) :is(.hero-cta, .story-scroll).ink-block { clip-path: inset(-40% 100% -40% -40%); }
-.has-section-transitions .ink-piece.is-visible :is(.hero-cta, .story-scroll).ink-block { animation: ink-across .7s cubic-bezier(.45, 0, .2, 1) calc(var(--d, 0s) + var(--t, 0s)) backwards; }
-@keyframes ink-across { from { clip-path: inset(-40% 100% -40% -40%); } to { clip-path: inset(-40% -40% -40% -40%); } }
-.has-section-transitions .ink-piece:not(.is-visible) .story-avatar { opacity: 0; }
-.has-section-transitions .ink-piece.is-visible .story-avatar { animation: reveal-fade .6s ease-out calc(var(--d, 0s) + var(--t, 0s)) backwards; }
-.has-section-transitions .ink-piece:not(.is-visible) .plan-list li::before { opacity: 0; } /* each star with its own line */
-.has-section-transitions .ink-piece.is-visible .plan-list li::before { animation: reveal-fade .3s ease-out calc(var(--d, 0s) + var(--t, 0s)) backwards; }
-
-/* the pricing leaves: paper first, then the frame drawn round it, the rules drawn out from their stars, and the
-   embossed card and corner points pressed in */
-.has-section-transitions .ink-piece.plan:not(.is-visible)::before { opacity: 0; }
-.has-section-transitions .ink-piece.plan.is-visible::before { animation: reveal-fade .5s ease-out var(--d, 0s) backwards; }
-.has-section-transitions .ink-piece:not(.is-visible) .plan-frame rect { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
-.has-section-transitions .ink-piece.is-visible .plan-frame rect { animation: ink-draw 1.8s cubic-bezier(.45, 0, .25, 1) calc(var(--d, 0s) + .25s) backwards; }
-.has-section-transitions .ink-piece.is-visible .plan-frame--inner rect { animation-delay: calc(var(--d, 0s) + .45s); }
-@keyframes ink-draw { from { stroke-dasharray: 1 1; stroke-dashoffset: 1; } to { stroke-dasharray: 1 1; stroke-dashoffset: 0; } }
-.has-section-transitions .ink-piece:not(.is-visible) .plan-mark { opacity: 0; }
-.has-section-transitions .ink-piece.is-visible .plan-mark { animation: reveal-fade 1.2s ease-out calc(var(--d, 0s) + 1.6s) backwards; }
-.has-section-transitions .ink-piece:not(.is-visible) .plan-name::after,
-.has-section-transitions .ink-piece:not(.is-visible) .plan-includes::before { background-size: 0 1px; color: transparent; }
-.has-section-transitions .ink-piece.is-visible .plan-name::after { animation: ink-rule .6s ease-out calc(var(--d, 0s) + var(--t-end, 0s)) backwards; }
-.has-section-transitions .ink-piece.is-visible .plan-includes::before { animation: ink-rule .6s ease-out calc(var(--d, 0s) + var(--t, 0s)) backwards; }
-@keyframes ink-rule { from { background-size: 0 1px; color: transparent; } 40% { color: transparent; } }
-
-/* the emblem: the circle, the square and the triangle drawn in turn, the axes and centre pricked in, then the
-   engraving sketched in on a slant */
-.has-section-transitions .ink-piece:not(.is-visible) .plan-line { stroke-dasharray: 1 1; stroke-dashoffset: 1; }
-.has-section-transitions .ink-piece.is-visible .plan-line { animation: ink-draw .8s cubic-bezier(.45, 0, .3, 1) calc(var(--d, 0s) + var(--t, 0s)) backwards; }
-.has-section-transitions .ink-piece.is-visible .plan-line:nth-child(2) { animation-delay: calc(var(--d, 0s) + var(--t, 0s) + .22s); }
-.has-section-transitions .ink-piece.is-visible .plan-line:nth-child(3) { animation-delay: calc(var(--d, 0s) + var(--t, 0s) + .44s); }
-.has-section-transitions .ink-piece:not(.is-visible) :is(.plan-geometry-axis, .plan-geometry-dot) { opacity: 0; }
-.has-section-transitions .ink-piece.is-visible :is(.plan-geometry-axis, .plan-geometry-dot) { animation: reveal-fade .5s ease-out calc(var(--d, 0s) + var(--t, 0s) + .6s) backwards; }
-.has-section-transitions .ink-piece:not(.is-visible) .plan-engraving {
-  -webkit-mask: linear-gradient(110deg, #000 42%, transparent 58%) 100% 0 / 260% 100% no-repeat;
-  mask: linear-gradient(110deg, #000 42%, transparent 58%) 100% 0 / 260% 100% no-repeat;
+/* ---------- Page sheet: between the home page and the booking page (js/motion.js) ----------
+   Leaving, a sheet of the same orange paper slides up over the page; the next page opens under it and the sheet lifts
+   away (an inline script in each page's head sets .is-arriving). A cross-fade with reduced motion. Never blocks a
+   click: it ignores the pointer, and arriving needs no script beyond that one line. */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 1000; pointer-events: none; visibility: hidden;
+  background: var(--paper) url("../assets/Background/Orange Background.png") center / cover no-repeat;
+  box-shadow: 0 -18px 40px rgba(26, 6, 3, .38), 0 18px 40px rgba(26, 6, 3, .38);
+  translate: 0 104%;
 }
-.has-section-transitions .ink-piece.is-visible .plan-engraving { animation: ink-sketch 1s cubic-bezier(.4, 0, .3, 1) calc(var(--d, 0s) + var(--t, 0s) + .5s) backwards; }
-@keyframes ink-sketch {
-  from {
-    -webkit-mask: linear-gradient(110deg, #000 42%, transparent 58%) 100% 0 / 260% 100% no-repeat;
-    mask: linear-gradient(110deg, #000 42%, transparent 58%) 100% 0 / 260% 100% no-repeat;
-  }
-  to {
-    -webkit-mask: linear-gradient(110deg, #000 42%, transparent 58%) 0 0 / 260% 100% no-repeat;
-    mask: linear-gradient(110deg, #000 42%, transparent 58%) 0 0 / 260% 100% no-repeat;
-  }
+.is-leaving body::after { visibility: visible; translate: 0 0; transition: translate .46s cubic-bezier(.7, 0, .25, 1); }
+.is-arriving body::after { visibility: visible; animation: sheet-lift .75s cubic-bezier(.65, 0, .2, 1) .08s both; }
+@keyframes sheet-lift { from { translate: 0 0; } to { translate: 0 -104%; } }
+@media (prefers-reduced-motion: reduce) {
+  body::after { translate: none; opacity: 0; box-shadow: none; }
+  .is-leaving body::after { opacity: 1; transition: opacity .15s linear; }
+  .is-arriving body::after { animation: sheet-fade .3s linear both; }
+  @keyframes sheet-fade { from { opacity: 1; } to { opacity: 0; } }
 }
 
+/* ---------- Small states ---------- */
+/* Daily Card isn't ready: the menu shows it, says so on hover or focus, and goes nowhere */
+.home-nav a[aria-disabled="true"] { position: relative; cursor: default; opacity: .72; }
+.home-nav a[aria-disabled="true"]:hover, .home-nav a[aria-disabled="true"]:focus-visible { text-decoration: none; }
+.home-nav a[aria-disabled="true"]::after {
+  display: block; content: "Coming soon"; position: absolute; inset: auto 0 auto 0; top: 100%;
+  border: 0; border-image: none; filter: none;
+  font-family: var(--hero-face); font-size: 11px; letter-spacing: .04em; text-align: center; white-space: nowrap;
+  opacity: 0; translate: 0 -4px; transition: opacity .2s, translate .3s cubic-bezier(.16, 1, .3, 1);
+}
+.home-nav a[aria-disabled="true"]:is(:hover, :focus-visible)::after { opacity: .9; translate: 0 0; }
+/* a priority chip's number settles in as it is chosen */
+.chips button[data-rank]::before { animation: rank-in .32s cubic-bezier(.16, 1, .3, 1); }
+@keyframes rank-in { from { scale: .4; opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { @keyframes rank-in { from { opacity: 0; } } }
 /* The supplied collage already includes Nyala. Scope its light paper and dark
    lettering to the landing hero; readings and other pages keep terracotta. */
 .hero--collage {

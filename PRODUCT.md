@@ -18,7 +18,7 @@ The intake form's visual surface uses the supplied cream paper and ornamental ru
 
 ## Stack
 
-Static HTML/CSS/JS (`index.html`, `book.html`, `css/style.css`, `js/booking.js`, `js/hero-motion.js`, `assets/`). The home page uses CSS for artwork placement and a gentle float, plus `js/hero-motion.js` for mouse tilt and motion preferences; the old `js/main.js` fitting script is retained but not loaded. No framework or required build step; optional PowerShell tools prepare web assets.
+Static HTML/CSS/JS (`index.html`, `book.html`, `css/style.css`, `js/booking.js`, `js/hero-motion.js`, `assets/`). Motion (since 2026-11-24): GSAP 3.15.1 with ScrollTrigger and Lenis 1.3.27, vendored in `js/vendor/` (no CDN, no build step); `js/ink.js`, `js/motion.js`, `js/section-transitions.js` and `js/booking-motion.js` use them. React Bits effects are ported to plain JS rather than adding React. The home page uses CSS for artwork placement and a gentle float, plus `js/hero-motion.js` for mouse tilt and motion preferences; the old `js/main.js` fitting script is retained but not loaded. No framework or required build step; optional PowerShell tools prepare web assets.
 
 ## Users
 
